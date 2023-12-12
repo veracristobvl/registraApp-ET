@@ -1,0 +1,84 @@
+
+<ion-content [fullscreen]="true">
+    <div class="title">
+      <p>RegistrApp <br>Docente</p>
+      <div class="title-image">
+        <img src="../../../assets/img/qr-feliz.png"  alt="" >
+      </div>  
+    </div>
+    <ion-list >
+      <form action="submit" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+        
+        
+        <ion-item>
+          <ion-icon slot="start" name="mail"></ion-icon>
+          <ion-input type="email" name="email" label="Email"  labelPlacement="floating" formControlName="email" (click)="clearError()"></ion-input>
+        </ion-item>
+        <div class="div-error" *ngIf="errorMessage === 'datos incorrectos'">
+          El email o la constraseña son incorrectos
+        </div>
+        <div class="div-error" *ngIf="formLogin.get('email').hasError('email') && formLogin.get('email').touched">
+          El email no tiene un formato válido.
+        </div>
+        
+        <ion-item>
+          <ion-icon slot="start" name="shield"></ion-icon>
+          <ion-input  formControlName="password" type="password" name="password" label="Contraseña"  labelPlacement="floating" ></ion-input>
+        </ion-item>
+        <div class="div-error" *ngIf="formLogin.get('password').hasError('required') && formLogin.get('password').touched">
+          Confirmar la contraseña es requerido.
+        </div>
+        <div class="div-error last" *ngIf="errorMessage === 'datos incorrectos'">
+          El email o la constraseña son incorrectos
+        </div>
+        
+      
+      <ion-button expand="full"  type="submit" [disabled]="!formLogin.valid" >INICIAR SESIÓN</ion-button>
+    </form>
+  </ion-list>
+  <div class="boton-registro">
+    <p >¿Aún no tienes una cuenta? </p>
+    <span [routerLink]="['/signup']">Crear Cuenta</span>
+  </div> 
+      <!-- <div class="form">
+        <form action="" (ngSubmit)="submit" >
+          
+
+          
+          <div class="input-docente-div" style="align-items: center; ">
+            <div style="display: flex;">
+              <ion-icon name="mail-outline" size="large" style="border: 0px solid black;"></ion-icon>
+              <input [(ngModel)]="email"   type="text" placeholder="Email" name="email"><br><br>
+            </div>
+            <div class="input-error" *ngIf="emailInvalido">
+              El email no existe.
+            </div>
+          </div>
+          
+          <div class="input-docente-div" style="align-items: center; ">
+            <div style="display: flex;">
+              <ion-icon name="shield-outline" size="large" style="border: 0px solid black;"></ion-icon>
+              <input [(ngModel)]="contrasena"  type="password" placeholder="Contraseña" name="contrasena"><br><br>
+            </div>
+            <div class="input-error" *ngIf="contrasenaInvalida">
+              La contraseña no es correcta.
+            </div>
+          </div>
+
+        
+          <button class="btn-login" style="margin-top: 0rem; font-weight: bold; font-size: 1rem; color: #052c54;"  type="submit" >INICIAR SESIÓN</button>
+        </form>
+        
+      </div>
+      <div class="boton-registro">
+        <p style="display: inline;">¿Aún no tienes una cuenta? </p>
+        <span [routerLink]="['/signup']">Registrarse</span>
+      </div>
+
+      <ul>
+        <li *ngFor="let item of item$ | async">
+          {{item.nombre}}
+        </li>
+      </ul>
+  </div> -->
+</ion-content>

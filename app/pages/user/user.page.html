@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  
+  <div style="padding-top: 5rem; display: flex; flex-direction: column; justify-content: center; align-items: center;"  >
+    
+    
+    <ion-list style="max-width: 20rem;" *ngIf="docente">
+    <p>{{docente.email}}</p>
+    <ion-item>
+      <ion-icon name="mail-outline" size="large" style="border: 0px solid black; margin:auto;"></ion-icon>
+      <ion-input label="" placeholder="{{docente.nombre}}" ></ion-input>
+      <ion-button  color="success">Modificar</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="call-outline" size="large" style="border: 0px solid black; margin:auto;"></ion-icon>
+      <ion-input label="" placeholder="{{docente.apellido}}" ></ion-input>
+      <ion-button  color="success">Modificar</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="shield-outline" size="large" style="border: 0px solid black; margin:auto;"></ion-icon>
+      <ion-input label="" placeholder="{{docente.email}}" ></ion-input>
+      <ion-button  color="success">Modificar</ion-button>
+    </ion-item>
+  
+    
+  </ion-list>
+  
+  </div>  
+
+
+</ion-content>

@@ -1,0 +1,195 @@
+
+<ion-content [fullscreen]="false" style="background-color: #052c54;">
+  <!-- CONTAINER GENERAL  -->
+  <div 
+    class="title"
+    style="text-align: center ;"
+  >
+    <p>REGISTRO</p>
+  </div>
+  
+  <ion-list >
+    <form action="submit" [formGroup]="formReg" (ngSubmit)="onSubmit()">
+      
+      <ion-item>
+        <ion-icon slot="start"  name="person"></ion-icon>
+        <ion-input formControlName="nombre" type="text" label="Nombre"  labelPlacement="stacked " name="floating"></ion-input>
+      </ion-item>
+      <div class="div-error" *ngIf="formReg.get('nombre').hasError('required') && formReg.get('nombre').touched">
+        El nombre es requerido.
+      </div>
+      <ion-item>
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-input  formControlName="apellido" type="text" name="apellido" label="Apellido"  labelPlacement="floating " ></ion-input>
+      </ion-item>
+      <div class="div-error" *ngIf="formReg.get('apellido').hasError('required') && formReg.get('apellido').touched">
+        El apellido es requerido.
+      </div>
+
+
+      <ion-item>
+        <ion-icon slot="start" name="mail"></ion-icon>
+        <ion-input type="email" name="email" label="Email"  labelPlacement="floating" formControlName="email"></ion-input>
+      </ion-item>
+      <div class="div-error" *ngIf="formReg.get('email').hasError('email') && formReg.get('email').touched">
+        El email no tiene un formato válido.
+      </div>
+
+
+      <ion-item>
+        <ion-icon slot="start" name="shield"></ion-icon>
+        <ion-input  formControlName="password" type="password" name="password" label="Contraseña"  labelPlacement="floating" ></ion-input>
+      </ion-item>
+      <div class="div-error" *ngIf="formReg.get('password').hasError('minlength') && formReg.get('password').touched">
+        La contraseña debe tener al menos {{ formReg.get('password').getError('minlength').requiredLength }} caracteres.
+      </div>
+
+
+      <ion-item>
+        <ion-icon slot="start" name="shield"></ion-icon>
+        <ion-input  formControlName="confirmPassword" type="password" name="password2" label="Reingresa la Contraseña"  labelPlacement="floating " ></ion-input>
+      </ion-item>
+      <div class="div-error" *ngIf="formReg.get('confirmPassword').hasError('required') && formReg.get('confirmPassword').touched">
+        Confirmar la contraseña es requerido.
+      </div>
+      <div class="div-error" *ngIf="formReg.get('confirmPassword').hasError('passwordMismatch') && formReg.get('confirmPassword').touched">
+        Las contraseñas no coinciden.
+      </div>
+      <ion-item>
+        <ion-icon slot="start" name="book"></ion-icon>
+        <ion-select formControlName="asignatura1" name="asignatura1" label="asignatura 1" labelPlacement="floating">
+        <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura.name">{{asignatura.name}}</ion-select-option>
+        
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-icon slot="start" name="book"></ion-icon>
+      <ion-select formControlName="asignatura2" name="asignatura2" label="asignatura 2" labelPlacement="floating">
+        <ion-select-option *ngFor="let asignatura of asignaturas" [value]="asignatura.name">{{asignatura.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="div-error" *ngIf="formReg.get('asignatura2').hasError('asignaturaIgual') && formReg.get('asignatura2').touched">
+      Las asignaturas elegidas deben ser diferentes.
+    </div>
+    
+    <ion-button expand="full"  type="submit" [disabled]="formReg.invalid">CREAR CUENTA</ion-button>
+  </form>
+</ion-list>
+
+  
+  
+  <!--
+  <div class="container">
+    <div class="title">
+      <p>REGISTRO</p>
+    </div>
+
+      
+        
+      <div  class="form">
+        
+        <form action="" [formGroup]="formReg" (ngSubmit)="onSubmit()">          
+          
+          <div class="input-docente-div" style="align-items: center; ">
+            <div style="display: flex;">
+              <ion-icon name="person-outline" size="large" style="border: 0px solid black;"></ion-icon>
+              <input   formControlName="nombre" type="text" placeholder="Nombre" (input)="onChange()"><br><br>
+            </div>
+            <div class="input-error" *ngIf="registroForm.get('nombre').hasError('required') && registroForm.get('nombre').touched">
+              El nombre es obligatorio.
+            </div>
+          </div>
+      
+          <div class="input-docente-div" style="align-items: center; ">
+            <div style="display: flex;">
+              <ion-icon name="person-outline" size="large" style="border: 0px solid black;"></ion-icon>
+              <input  formControlName="apellido" type="text" placeholder="Apellido" (input)="onChange()"><br><br>
+            </div>
+            <div class="input-error" *ngIf="registroForm.get('apellido').hasError('required') && registroForm.get('apellido').touched">
+              El apellido es obligatorio.
+            </div>
+          </div>
+          
+          <div class="input-docente-div" style="align-items: center;">
+            <div style="display: flex;">
+              <ion-icon name="mail-outline" size="large" style="border: 0px solid black;  "></ion-icon>
+              <input  id="email"  formControlName="email" type="text" placeholder="Email" (input)="onChange()"><br><br>
+            </div>
+            <div class="input-error" *ngIf="registroForm.get('email').hasError('required') && registroForm.get('email').touched">
+              El email es obligatorio.
+            </div>
+            <div class="input-error" *ngIf="registroForm.get('email').hasError('email') && registroForm.get('email').touched">
+              Ingresa un email valido.
+            </div>
+          </div>
+        
+          <div class="input-docente-div" style="align-items: center; ">
+            <div style="display: flex;">
+              <ion-icon name="call-outline" size="large" style="border: 0px solid black;  "></ion-icon>
+              <input formControlName="telefono" type="number" placeholder="Telefono" (input)="onChange()"><br><br>
+            </div>
+            <span class="input-error" *ngIf="registroForm.get('telefono').hasError('pattern') && registroForm.get('telefono').touched">
+              Ingresa un telefono valido.
+            </span>
+            <span class="input-error" *ngIf="registroForm.get('telefono').hasError('required') && registroForm.get('telefono').touched">
+              El telefono es obligatorio.
+            </span>
+          </div>
+          
+          <div class="input-docente-div" style="align-items: center; ">
+            <div style="display: flex;">
+              <ion-icon name="shield-half-outline" size="large" style="border: 0px solid black;  "></ion-icon>
+              <input  formControlName="password" id="password"  type="password" placeholder="Password" (input)="onChange()">
+            </div>
+            <span class="input-error" *ngIf="registroForm.get('contraseña').hasError('minlength') && registroForm.get('contraseña').touched">
+              Ingresa una contraseña valida.
+            </span>
+            <span class="input-error" *ngIf="registroForm.get('contraseña').hasError('required') && registroForm.get('contraseña').touched">
+              La contraseña es obligatoria.
+            </span>
+          </div> 
+       
+
+          <div class="input-docente-div" style="align-items: center;">
+            <div style="display: flex;">
+              <ion-icon name="book-outline" size="large" style="border: 0px solid black;  "></ion-icon>
+              <input   formControlName="asignatura1" type="text" list="asignaturas1" (input)="onChange()" (input)="onAsignatura1Change()" placeholder="Asignatura 1" >
+              <datalist id="asignaturas1" >
+                <option *ngFor="let asignatura of asignaturasInput1" [value]="asignatura" >
+                </datalist>
+            </div>
+            <span class="input-error" *ngIf="registroForm.get('asignatura1').hasError('required') && registroForm.get('asignatura1').touched">
+              El campo Asignatura 1 es obligatorio.
+            </span>
+            
+          </div>
+          
+            <div class="input-docente-div" style="align-items: center;" *ngIf="newDocente.asignatura1 ">
+              <div style="display: flex;">
+                <ion-icon name="book-outline" size="large" style="border: 0px solid black;  "></ion-icon>
+                <input formControlName="asignatura2"  type="text" list="asignaturas2" placeholder="Asignatura 2" (input)="onChange()" >
+                <datalist id="asignaturas2" >
+                  <option *ngFor="let asignatura of opcionesAsignaturas2" [value]="asignatura" >
+                </datalist>
+              </div>
+              <span class="input-error" *ngIf="registroForm.get('asignatura2').hasError('required') && registroForm.get('asignatura2').touched">
+                El campo Asignatura 2 es obligatorio.
+              </span>
+            </div>
+            
+          <button class="btn-login"  type="submit" >Registrarse</button>
+        </form>
+        
+      </div>
+      
+
+      
+       -->
+
+       <div class="boton-registro">
+        <p >Ya tienes una cuenta? </p>
+        <span [routerLink]="['/login']">Iniciar Sesión</span>
+      </div> 
+
+</ion-content>

@@ -1,0 +1,148 @@
+ion-content{
+    --ion-background-color: #052c54;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    
+    width: 100%;
+    background-color:#052c54;
+    text-align: center;
+    
+    *{
+        width: 15rem;
+    }
+}
+.title{
+    color: #f2ba27;
+    font-size: 2rem;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: 6px;
+    // border: 1px solid white;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+
+    .title-image{
+        width: 10rem;
+        img{
+            width: 100%;
+            border-radius: 25%
+        };
+    }
+}
+
+.form {
+    color: #f2ba27;
+    letter-spacing: 3px;
+    text-align: left;
+    margin: 3rem 0 2rem 0;
+    input{
+        border-radius: 7.5px;
+        border: none;
+        padding: 7px;
+        //margin-top: 7px;
+        color: #052c54;
+        letter-spacing: 2px;
+        font-weight: bold;
+    }
+    
+}
+
+.btn-login{
+    border: 1px solid white;
+    background-color: #f2ba27;
+    padding: 1rem 0 1rem 0;
+    border-radius: 15px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+
+.input-error{
+    font-size: 12px;
+    color: red;
+    display: block;
+    margin:0.5rem 0 0 2.75rem;
+}
+
+.input-docente-div{
+    margin-bottom: 1.5rem;  
+}
+
+.boton-registro{
+    color: white;
+    font-size: 0.75rem;
+    letter-spacing: 0;
+    margin-top: 1rem !important;
+    text-align: center;
+    p{
+        margin: 0;
+    }
+    span{
+        font-weight: bold;
+        text-decoration: underline;
+        color: #f2ba27;
+    }
+}
+
+// ELEMENTOS IONIC 
+ion-content {
+    --ion-background-color: #052c54; /* Establece el color de fondo */
+}
+ion-item {
+    display: flex;
+    align-items: end;
+    color: white;
+    margin-bottom: 1rem;    
+}
+ion-input, ion-select{
+    border-bottom: 0px solid white;
+
+}
+ion-icon, label{
+    color: #f2ba27;
+}
+
+ion-button{
+    text-align: center;
+    --background: #f2ba27;
+    color: #052c54;
+    letter-spacing: 2px;
+    font-weight: bold;
+    width: 325px;
+    --border-radious:100px;
+    margin-top: 1rem !important;
+}
+
+ion-content{
+    max-height: 100vh;
+}
+
+ion-list, ion-button, .boton-registro{
+    max-width: 500px;
+    margin: auto;
+}
+
+ion-item div {
+    font-size: 12px;
+    color: rgba(234,68,90,255);
+    padding-top: 0.75rem;
+    border-bottom: 0px;
+    font-weight: bold;
+}
+
+
+.div-error{
+    font-size: 12px;
+    color: rgba(234,68,90,255);
+    font-weight: bold;
+    margin-left: 4rem;
+}
